@@ -1,0 +1,31 @@
+CREATE DATABASE IF NOT EXISTS `EC1_Quispe_Gomez`;
+
+USE `EC1_Quispe_Gomez`;
+
+DROP TABLE IF EXISTS `marca`;
+
+CREATE TABLE `marca` (
+	`codigo` int primary key auto_increment,
+    `nombre` varchar(30)
+);
+
+DROP TABLE IF EXISTS `computadoras`;
+
+CREATE TABLE `computadoras` (
+	`codigo` int primary key auto_increment,
+    `descripcion` varchar(30),
+    `precio` decimal,
+    `stock` int,
+    `codigo_marca` int references `marca`(`codigo`)
+);
+
+INSERT INTO `marca`(`nombre`) VALUES ("HP"), ("Lenovo"), ("Acer");
+
+INSERT INTO `computadoras`(`descripcion`, `precio`, `stock`, `codigo_marca`)
+VALUES 	("Computadora 8 gigabytes", 1000.4, 4, 1),
+		("Computadora 16 gigabytes", 4000.4, 67, 2),
+        ("Computadora 12 gigabytes", 3040.4, 4, 3);
+        
+SELECT * FROM `marca`;
+
+SELECT * FROM `computadoras`;

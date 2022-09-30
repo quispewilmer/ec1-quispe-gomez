@@ -1,4 +1,4 @@
-package com.evaluations.ecwilmerquispe;
+package com.evaluations.ecquispegomez;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

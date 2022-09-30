@@ -1,4 +1,4 @@
-package com.evaluations.ecwilmerquispe;
+package com.evaluations.ecquispegomez;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
