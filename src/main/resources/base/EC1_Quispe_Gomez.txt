@@ -2,14 +2,14 @@ CREATE DATABASE IF NOT EXISTS `EC1_Quispe_Gomez`;
 
 USE `EC1_Quispe_Gomez`;
 
+DROP TABLE IF EXISTS `computadoras`;
+
 DROP TABLE IF EXISTS `marca`;
 
 CREATE TABLE `marca` (
 	`codigo` int primary key auto_increment,
     `nombre` varchar(30)
 );
-
-DROP TABLE IF EXISTS `computadoras`;
 
 CREATE TABLE `computadoras` (
 	`codigo` int primary key auto_increment,

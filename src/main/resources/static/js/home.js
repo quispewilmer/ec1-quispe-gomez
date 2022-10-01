@@ -61,7 +61,7 @@ function postComputadora(computadora) {
         }),
         contentType: "application/json",
         success: function() {
-            showSuccessAlert(`Registro exitoso!`);
+            showSuccessAlert(`Registro / Actualización exitosa!`);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             showDangerAlert(`Hubo un error al registrar, mensaje: ${textStatus}`)
@@ -178,14 +178,39 @@ function closeComputadoraModal() {
 
 function index() {
     let saveButton = $("#save-button");
+    let computadoraForm = $("#computadoraForm");
 
     fillComputadorasTable();
     fillMarcasCombobox();
 
+    computadoraForm.validate({
+        messages: {
+            descripcion: {
+              required: "Por favor, pon una descripción",
+              minlength: "Digita como mínimo 3 caracteres",
+              maxlength: "Digita como máximo 30 caracteres"
+            },
+            precio: {
+              required: "Por favor, pon un precio",
+              pattern: "El patrón es: X.YY"
+            },
+            stock: {
+              required: "Por favor, pon un stock",
+              min: "La cantidad mínima es 1",
+              max: "La cantidad máxima es 10"
+            },
+            marca: {
+              required: "Por favor, elige una marca"
+            },
+          }
+    });
+
     saveButton.on("click", e => {
-        saveComputadora();
-        emptyComputadoraForm();
-        closeComputadoraModal();
+        if(computadoraForm.valid()) {
+            saveComputadora();
+            emptyComputadoraForm();
+            closeComputadoraModal();
+        }
     });
 
     $("#computadoraModal").on("show.bs.modal", (e) => {
